@@ -13,7 +13,10 @@ const Home = () => {
           View Current Employees
         </Link>
         <h2 className="text-3xl font-bold">Create Employee</h2>
-        <form action="#" id="create-employee">
+        <form
+          action="#"
+          id="create-employee"
+          className="flex flex-col w-1/2 mb-3">
           <label htmlFor="first-name">First Name</label>
           <Input type="text" id="first-name" />
 
@@ -26,7 +29,7 @@ const Home = () => {
           <label htmlFor="start-date">Start Date</label>
           <Input id="start-date" type="text" />
 
-          <fieldset className="address">
+          <fieldset className="address border border-primary rounded p-2">
             <legend>Address</legend>
 
             <label htmlFor="street">Street</label>
@@ -40,16 +43,16 @@ const Home = () => {
 
             <label htmlFor="zip-code">Zip Code</label>
             <Input id="zip-code" type="number" />
-
-            <label htmlFor="department">Department</label>
-            <select name="department" id="department">
-              <option>Sales</option>
-              <option>Marketing</option>
-              <option>Engineering</option>
-              <option>Human Resources</option>
-              <option>Legal</option>
-            </select>
           </fieldset>
+
+          <label htmlFor="department">Department</label>
+          <select name="department" id="department" className="p-2">
+            <option>Sales</option>
+            <option>Marketing</option>
+            <option>Engineering</option>
+            <option>Human Resources</option>
+            <option>Legal</option>
+          </select>
         </form>
 
         <Button>Save</Button>
