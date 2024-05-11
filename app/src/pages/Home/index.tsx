@@ -1,5 +1,13 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { states } from "@/lib/data"
 import { Link } from "react-router-dom"
 
 const Home = () => {
@@ -30,7 +38,7 @@ const Home = () => {
           <Input id="start-date" type="text" />
 
           <fieldset className="address border border-primary rounded p-2">
-            <legend>Address</legend>
+            <legend className="px-1">Address</legend>
 
             <label htmlFor="street">Street</label>
             <Input id="street" type="text" />
@@ -39,20 +47,38 @@ const Home = () => {
             <Input id="city" type="text" />
 
             <label htmlFor="state">State</label>
-            <select name="state" id="state"></select>
+            <Select name="state">
+              <SelectTrigger className="w-full" id="state">
+                <SelectValue placeholder="Select a state" />
+              </SelectTrigger>
+              <SelectContent>
+                {states.map(state => (
+                  <SelectItem
+                    key={state.abbreviation}
+                    value={state.abbreviation}>
+                    {state.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
 
             <label htmlFor="zip-code">Zip Code</label>
             <Input id="zip-code" type="number" />
           </fieldset>
 
           <label htmlFor="department">Department</label>
-          <select name="department" id="department" className="p-2">
-            <option>Sales</option>
-            <option>Marketing</option>
-            <option>Engineering</option>
-            <option>Human Resources</option>
-            <option>Legal</option>
-          </select>
+          <Select name="department">
+            <SelectTrigger className="w-full" id="department">
+              <SelectValue placeholder="Select a department" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="sales">Sales</SelectItem>
+              <SelectItem value="marketing">Marketing</SelectItem>
+              <SelectItem value="engineering">Engineering</SelectItem>
+              <SelectItem value="human-resources">Human Resources</SelectItem>
+              <SelectItem value="legal">Legal</SelectItem>
+            </SelectContent>
+          </Select>
         </form>
 
         <Button>Save</Button>
