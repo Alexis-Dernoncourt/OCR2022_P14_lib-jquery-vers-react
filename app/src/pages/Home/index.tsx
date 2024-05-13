@@ -8,6 +8,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { states } from "@/lib/data"
+import { ModalComponent } from "my-react-modal-ad62"
 import { Link } from "react-router-dom"
 
 const Home = () => {
@@ -83,7 +84,26 @@ const Home = () => {
 
         <Button>Save</Button>
       </div>
-      <div className="modal">Employee Created!</div>
+      <ModalComponent modalContainerClass="fixed top-[20%] left-[50%] translate-x-[-50%] z-9999 flex justify-center flex-col min-w-[300px] max-w-[80%] rounded pt-12 pb-4 px-4 bg-red-500">
+        <h1 className="text-3xl font-bold">
+          Un long titre. Un long titre. Un long titre. Un long titre.
+        </h1>
+        <p className="m-0 p-0 leading-relaxed">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem
+          perferendis quia fugiat dolor magnam. Sunt recusandae odit ut maiores
+          enim nemo assumenda, laudantium iste non eum? Quibusdam accusamus
+          necessitatibus voluptatibus! Distinctio dolore necessitatibus
+          sapiente, consequatur sint dignissimos voluptates rem excepturi
+          aliquid obcaecati quo pariatur sequi accusamus illum dolorum
+          voluptatum accusantium ipsa alias consequuntur dolorem fuga eos beatae
+          saepe. Dolor, doloribus? Numquam officiis error doloribus harum eius!
+          Architecto magni aliquam, nihil repellendus veritatis excepturi eius
+          explicabo molestias a, ad hic. Voluptate necessitatibus debitis minima
+          et assumenda, architecto iusto ut soluta ullam.
+        </p>
+        <div className="modal text-2xl">Employee Created!</div>
+        <button onClick={() => console.log("fermer")}>Fermer</button>
+      </ModalComponent>
     </>
   )
 }
