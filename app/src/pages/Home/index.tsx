@@ -9,9 +9,17 @@ import {
 } from "@/components/ui/select"
 import { states } from "@/lib/data"
 import { ModalComponent } from "my-react-modal-ad62"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 const Home = () => {
+  const [showModal, setShowModal] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowModal(true), 2500)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <>
       <div className="flex items-center justify-center">
@@ -84,7 +92,10 @@ const Home = () => {
 
         <Button>Save</Button>
       </div>
-      <ModalComponent modalContainerClass="fixed top-[20%] left-[50%] translate-x-[-50%] z-9999 flex justify-center flex-col min-w-[300px] max-w-[80%] rounded pt-12 pb-4 px-4 bg-red-500">
+      <ModalComponent
+        showModal={showModal}
+        setShowModal={setShowModal}
+        modalContainerClass="fixed top-[20%] left-[50%] translate-x-[-50%] z-9999 flex justify-center flex-col min-w-[300px] max-w-[80%] rounded pt-12 pb-4 px-4 bg-white">
         <h1 className="text-3xl font-bold">
           Un long titre. Un long titre. Un long titre. Un long titre.
         </h1>
