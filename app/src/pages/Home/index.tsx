@@ -8,12 +8,16 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { states } from "@/lib/data"
+import { useAppSelector } from "@/redux/hooks"
 import { ModalComponent } from "my-react-modal-ad62"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false)
+
+  const employees = useAppSelector(state => state.employees)
+  console.log("🚀 ~ Home ~ employees:", employees)
 
   useEffect(() => {
     const timer = setTimeout(() => setShowModal(true), 2500)
@@ -95,7 +99,7 @@ const Home = () => {
       <ModalComponent
         showModal={showModal}
         setShowModal={setShowModal}
-        modalContainerClass="fixed top-[20%] left-[50%] translate-x-[-50%] z-9999 flex justify-center flex-col min-w-[300px] max-w-[80%] rounded pt-12 pb-4 px-4 bg-white">
+        modalContainerClass="top-[20%] flex justify-center flex-col min-w-[300px] max-w-[80%] rounded pt-12 pb-4 px-4 bg-white">
         <h1 className="text-3xl font-bold">
           Un long titre. Un long titre. Un long titre. Un long titre.
         </h1>
