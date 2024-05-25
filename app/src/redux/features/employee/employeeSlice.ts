@@ -1,3 +1,4 @@
+import { testEmployeesData } from "@/lib/data"
 import type { PayloadAction } from "@reduxjs/toolkit"
 import { createSlice } from "@reduxjs/toolkit"
 
@@ -10,19 +11,10 @@ export type EmployeeStateType = {
   street: string
   city: string
   state: string
-  zipCode: string
+  zipCode: number
 }
-const initialState: EmployeeStateType = {
-  firstName: "",
-  lastName: "",
-  dateOfBirth: "",
-  startDate: "",
-  department: "",
-  street: "",
-  city: "",
-  state: "",
-  zipCode: "",
-}
+// const initialState: EmployeeStateType[] = []
+const initialState: EmployeeStateType[] = testEmployeesData
 
 export const employeeSlice = createSlice({
   name: "employees",
@@ -30,7 +22,7 @@ export const employeeSlice = createSlice({
   reducers: {
     setEmployee: (state, action: PayloadAction<EmployeeStateType>) => {
       console.log("🚀 ~ state:", state) //TODO: remove the log
-      state = action.payload
+      state.push(action.payload)
     },
   },
 })

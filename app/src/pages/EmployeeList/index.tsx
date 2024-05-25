@@ -1,32 +1,9 @@
+import { testEmployeesData } from "@/lib/data"
 import { Link } from "react-router-dom"
 import { DataTable } from "./DataTable"
 import { Employees, columns } from "./columns"
 
 const EmployeeList = () => {
-  const testEmployeesData = [
-    {
-      firstName: "John",
-      lastName: "Doe",
-      startDate: "2020-01-01",
-      department: "Engineering",
-      dateOfBirth: "1990-01-01",
-      street: "123 Main St",
-      city: "Anytown",
-      state: "CA",
-      zipCode: "12345",
-    },
-    {
-      firstName: "Jane",
-      lastName: "Doah",
-      startDate: "2022-02-01",
-      department: "Computer Scientist",
-      dateOfBirth: "1980-01-01",
-      street: "123 Main St",
-      city: "Anytown",
-      state: "CA",
-      zipCode: "54321",
-    },
-  ]
   const employees: Employees[] =
     JSON.parse(localStorage.getItem("employees") as string) || testEmployeesData
 
