@@ -1,21 +1,11 @@
+import { EmployeeStateType } from "@/redux/features/employee/employeeSlice"
 import { ColumnDef } from "@tanstack/react-table"
 
 // This type is used to define the shape of our header.
 // You can use a Zod schema here if you want.
-export type Employees = {
-  id: string
-  firstName: string
-  lastName: string
-  startDate: string
-  department: string
-  dateOfBirth: string
-  street: string
-  city: string
-  state: string
-  zipCode: number
-}
+// type Employees = {}
 
-export const columns: ColumnDef<Employees>[] = [
+export const columns: ColumnDef<EmployeeStateType>[] = [
   {
     accessorKey: "firstName",
     header: () => <div className="text-center font-bold">First Name</div>,

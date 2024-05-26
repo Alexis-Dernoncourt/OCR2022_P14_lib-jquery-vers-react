@@ -3,6 +3,7 @@ import type { PayloadAction } from "@reduxjs/toolkit"
 import { createSlice } from "@reduxjs/toolkit"
 
 export type EmployeeStateType = {
+  id: string
   firstName: string
   lastName: string
   dateOfBirth: string
@@ -21,7 +22,7 @@ export const employeeSlice = createSlice({
   initialState,
   reducers: {
     setEmployee: (state, action: PayloadAction<EmployeeStateType>) => {
-      console.log("🚀 ~ state:", state) //TODO: remove the log
+      // TODO: prevent duplication
       state.push(action.payload)
     },
   },

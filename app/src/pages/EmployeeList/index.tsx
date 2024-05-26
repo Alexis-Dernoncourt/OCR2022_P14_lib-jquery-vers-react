@@ -1,11 +1,10 @@
-import { testEmployeesData } from "@/lib/data"
+import { useAppSelector } from "@/redux/hooks"
 import { Link } from "react-router-dom"
 import { DataTable } from "./DataTable"
-import { Employees, columns } from "./columns"
+import { columns } from "./columns"
 
 const EmployeeList = () => {
-  const employees: Employees[] =
-    JSON.parse(localStorage.getItem("employees") as string) || testEmployeesData
+  const employees = useAppSelector(state => state.employees)
 
   return (
     <div id="employee-div" className="container">
