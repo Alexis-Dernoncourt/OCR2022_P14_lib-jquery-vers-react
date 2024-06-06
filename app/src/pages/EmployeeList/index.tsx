@@ -9,7 +9,7 @@ const EmployeeList = () => {
   return (
     <div id="employee-div" className="container">
       <h1 className="text-5xl font-bold">Current Employees</h1>
-      <div className="container mx-auto py-10 w-full">
+      <div className="container mx-auto py-10 px-0 md:px-8 w-full">
         <DataTable columns={columns} data={employees} />
       </div>
       <Link to="/">Home</Link>

@@ -1,5 +1,7 @@
+import { Button } from "@/components/ui/button"
 import { EmployeeStateType } from "@/redux/features/employee/employeeSlice"
 import { ColumnDef } from "@tanstack/react-table"
+import { DisplayArrow } from "./Arrow"
 
 // This type is used to define the shape of our header.
 // You can use a Zod schema here if you want.
@@ -8,7 +10,14 @@ import { ColumnDef } from "@tanstack/react-table"
 export const columns: ColumnDef<EmployeeStateType>[] = [
   {
     accessorKey: "firstName",
-    header: () => <div className="text-center font-bold">First Name</div>,
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+        <div className="text-center font-bold">First Name</div>
+        <DisplayArrow column={column} />
+      </Button>
+    ),
     cell: ({ column, row }) => {
       return (
         <div className="text-center font-medium">{row.getValue(column.id)}</div>
@@ -17,7 +26,14 @@ export const columns: ColumnDef<EmployeeStateType>[] = [
   },
   {
     accessorKey: "lastName",
-    header: () => <div className="text-center font-bold">Last Name</div>,
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+        <div className="text-center font-bold">Last Name</div>
+        <DisplayArrow column={column} />
+      </Button>
+    ),
     cell: ({ column, row }) => {
       return (
         <div className="text-center font-medium">{row.getValue(column.id)}</div>
@@ -26,7 +42,14 @@ export const columns: ColumnDef<EmployeeStateType>[] = [
   },
   {
     accessorKey: "startDate",
-    header: () => <div className="text-center font-bold">Start Date</div>,
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+        <div className="text-center font-bold">Start Date</div>
+        <DisplayArrow column={column} />
+      </Button>
+    ),
     cell: ({ column, row }) => {
       return (
         <div className="text-center font-medium">{row.getValue(column.id)}</div>
@@ -35,7 +58,14 @@ export const columns: ColumnDef<EmployeeStateType>[] = [
   },
   {
     accessorKey: "department",
-    header: () => <div className="text-center font-bold">Department</div>,
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+        <div className="text-center font-bold">Department</div>
+        <DisplayArrow column={column} />
+      </Button>
+    ),
     cell: ({ column, row }) => {
       return (
         <div className="text-center font-medium">{row.getValue(column.id)}</div>
@@ -44,7 +74,14 @@ export const columns: ColumnDef<EmployeeStateType>[] = [
   },
   {
     accessorKey: "dateOfBirth",
-    header: () => <div className="text-center font-bold">Date of birth</div>,
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+        <div className="text-center font-bold">Date of birth</div>
+        <DisplayArrow column={column} />
+      </Button>
+    ),
     cell: ({ column, row }) => {
       return (
         <div className="text-center font-medium">{row.getValue(column.id)}</div>
@@ -53,7 +90,14 @@ export const columns: ColumnDef<EmployeeStateType>[] = [
   },
   {
     accessorKey: "street",
-    header: () => <div className="text-center font-bold">Street</div>,
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+        <div className="text-center font-bold">Street</div>
+        <DisplayArrow column={column} />
+      </Button>
+    ),
     cell: ({ column, row }) => {
       return (
         <div className="text-center font-medium">{row.getValue(column.id)}</div>
@@ -62,7 +106,14 @@ export const columns: ColumnDef<EmployeeStateType>[] = [
   },
   {
     accessorKey: "city",
-    header: () => <div className="text-center font-bold">City</div>,
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+        <div className="text-center font-bold">City</div>
+        <DisplayArrow column={column} />
+      </Button>
+    ),
     cell: ({ column, row }) => {
       return (
         <div className="text-center font-medium">{row.getValue(column.id)}</div>
@@ -71,7 +122,14 @@ export const columns: ColumnDef<EmployeeStateType>[] = [
   },
   {
     accessorKey: "state",
-    header: () => <div className="text-center font-bold">State</div>,
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+        <div className="text-center font-bold">State</div>
+        <DisplayArrow column={column} />
+      </Button>
+    ),
     cell: ({ column, row }) => {
       return (
         <div className="text-center font-medium">{row.getValue(column.id)}</div>
@@ -80,7 +138,14 @@ export const columns: ColumnDef<EmployeeStateType>[] = [
   },
   {
     accessorKey: "zipCode",
-    header: () => <div className="text-center font-bold">Zip Code</div>,
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
+        <div className="text-center font-bold">Zip Code</div>
+        <DisplayArrow column={column} />
+      </Button>
+    ),
     cell: ({ column, row }) => {
       return (
         <div className="text-center font-medium">{row.getValue(column.id)}</div>

@@ -66,6 +66,7 @@ const Home = () => {
       })
     )
     setShowModal(true)
+    form.reset()
   }
 
   return (
