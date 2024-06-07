@@ -11,7 +11,6 @@ import {
 } from "@tanstack/react-table"
 
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import {
   Table,
@@ -22,6 +21,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { useState } from "react"
+import { DebouncedInput } from "./DebounceInput"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -36,6 +36,7 @@ export function DataTable<TData, TValue>({
   const [pageIndex, setPageIndex] = useState(0)
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
+  const [globalFilter, setGlobalFilter] = useState("")
 
   const table = useReactTable({
     data,
@@ -46,10 +47,13 @@ export function DataTable<TData, TValue>({
     getSortedRowModel: getSortedRowModel(),
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
+    onGlobalFilterChange: setGlobalFilter,
+    // globalFilterFn: "fuzzy",
     autoResetPageIndex: false,
     state: {
       sorting,
       columnFilters,
+      globalFilter,
     },
   })
 
@@ -76,15 +80,11 @@ export function DataTable<TData, TValue>({
         <div>
           <Label className="flex gap-4 items-center !m-0">
             Search:
-            <Input
-              placeholder="Filter..."
-              value={
-                (table.getColumn("firstName")?.getFilterValue() as string) ?? ""
-              }
-              onChange={event =>
-                table.getColumn("firstName")?.setFilterValue(event.target.value)
-              }
-              className="max-w-sm"
+            <DebouncedInput
+              value={globalFilter ?? ""}
+              onChange={value => setGlobalFilter(String(value))}
+              className="p-2 font-lg shadow border border-block"
+              placeholder="Search all columns..."
             />
           </Label>
         </div>
