@@ -41,19 +41,21 @@ const Home = () => {
     zipCode: z.string().min(5).max(5).regex(/^\d+$/, "Must be 5 digits"),
   })
 
+  const defaultValues = {
+    firstName: "",
+    lastName: "",
+    dateOfBirth: "",
+    startDate: "",
+    department: "",
+    street: "",
+    city: "",
+    state: "",
+    zipCode: "",
+  }
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      dateOfBirth: "",
-      startDate: "",
-      department: "",
-      street: "",
-      city: "",
-      state: "",
-      zipCode: "",
-    },
+    defaultValues,
   })
 
   function onSubmit(values: z.infer<typeof formSchema>) {
@@ -66,7 +68,7 @@ const Home = () => {
       })
     )
     setShowModal(true)
-    form.reset()
+    form.reset(defaultValues)
   }
 
   return (
@@ -181,6 +183,7 @@ const Home = () => {
                     <FormLabel>State</FormLabel>
                     <Select
                       onValueChange={field.onChange}
+                      value={field.value}
                       defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger className="w-full" id="state">
@@ -223,6 +226,7 @@ const Home = () => {
                   <FormLabel>Department</FormLabel>
                   <Select
                     onValueChange={field.onChange}
+                    value={field.value}
                     defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger className="w-full" id="department">

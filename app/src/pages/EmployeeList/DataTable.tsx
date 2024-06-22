@@ -48,7 +48,6 @@ export function DataTable<TData, TValue>({
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
     onGlobalFilterChange: setGlobalFilter,
-    // globalFilterFn: "fuzzy",
     autoResetPageIndex: false,
     state: {
       sorting,
@@ -59,7 +58,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <>
-      <div className="w-full flex flex-row justify-between items-center mb-6">
+      <div className="w-full flex flex-wrap flex-row justify-between gap-4 items-center mb-6">
         <div>
           Show{" "}
           <select
@@ -78,13 +77,13 @@ export function DataTable<TData, TValue>({
           entries
         </div>
         <div>
-          <Label className="flex gap-4 items-center !m-0">
+          <Label className="flex flex-col xsm:flex-row gap-4 xsm:items-center !m-0">
             Search:
             <DebouncedInput
               value={globalFilter ?? ""}
               onChange={value => setGlobalFilter(String(value))}
-              className="p-2 font-lg shadow border border-block"
-              placeholder="Search all columns..."
+              className="min-w-[230px] p-2 font-lg shadow border border-block"
+              placeholder="Search all columns (min 3 chars).."
             />
           </Label>
         </div>
